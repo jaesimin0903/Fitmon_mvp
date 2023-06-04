@@ -41,7 +41,7 @@ class ShopPage extends StatelessWidget {
     final avatarData = Provider.of<AvatarData>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(categoryTitle),
+        title: Text('상점'),
       ),
       body: Center(
         child: Column(

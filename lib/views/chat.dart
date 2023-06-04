@@ -52,7 +52,7 @@ class _ChatPageState extends State<ChatPage> {
     dynamic map = Map<dynamic, dynamic>.from(userData);
 
     msgArr.add(map);
-    String token = "Bearer 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";
+    String token = "Bearer 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";
     print("prompt : $msgArr");
     var response =
         await http.post(Uri.parse("https://api.openai.com/v1/chat/completions"),
