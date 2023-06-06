@@ -33,32 +33,37 @@ class _ChatPageState extends State<ChatPage> {
     String msg = '{"role": "user", "content": $prompt}';
     msgArr.add(msg);
     String model = "gpt-3.5-turbo";
-    String apiKey = "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";
+    String apiKey = "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";
+    print("$apiKey");
+    try {
+      var response = await http.post(
+        Uri.parse('https://api.openai.com/v1/chat/completions'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $apiKey',
+        },
+        body: jsonEncode({
+          'messages': msgArr,
+          'model': model,
+          'temperature': 0.5,
+          'n': 1,
+          'stop': '.'
+        }),
+      );
 
-    var response = await http.post(
-      Uri.parse('https://api.openai.com/v1/chat/completions'),
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $apiKey',
-      },
-      body: jsonEncode({
-        'messages': msgArr,
-        'model': model,
-        'temperature': 0.5,
-        'n': 1,
-        'stop': '.'
-      }),
-    );
-    print(response.statusCode);
-    if (response.statusCode == 200) {
-      Map<String, dynamic> result = jsonDecode(response.body);
-      String generatedMessage =
-          result['choices'][0]['message']['content'].trim();
-      print(generatedMessage);
-      setState(() {
-        messages.add(Message('User', prompt, true));
-        messages.add(Message('ChatBot', generatedMessage, false));
-      });
+      if (response.statusCode == 200) {
+        Map<String, dynamic> result = jsonDecode(response.body);
+        String generatedMessage =
+            result['choices'][0]['message']['content'].trim();
+        print(generatedMessage);
+        setState(() {
+          messages.add(Message('User', prompt, true));
+          messages.add(Message('ChatBot', generatedMessage, false));
+        });
+      }
+    } on Exception catch (e) {
+      print("e : $e");
+      rethrow;
     }
   }
 
