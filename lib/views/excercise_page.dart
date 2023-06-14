@@ -18,9 +18,9 @@ class _WorkoutPageState extends State<WorkoutPage> {
 
   // Fill this with your categories
   List<String> _names = [
-    'Exercise 1',
-    'Exercise 2',
-    'Exercise 3'
+    '스쿼트',
+    '데드리프트',
+    '플랭크'
   ]; // Fill this with your exercise names
 
   void _addExercise() {
@@ -44,20 +44,31 @@ class _WorkoutPageState extends State<WorkoutPage> {
     _exercises = Provider.of<AvatarData>(context, listen: false).myEx;
   }
 
+  bool _isChecked = false;
   @override
   Widget build(BuildContext context) {
     _exercises = context.watch<AvatarData>().myEx;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Workout'),
+        title: Text('운동 관리'),
       ),
       body: Column(
         children: [
-          ..._exercises.map((exercise) => ListTile(
-                title: Text('${exercise.name}'),
-                subtitle: Text(
-                    'Weight: ${exercise.weight}kg, Reps: ${exercise.reps}, Sets: ${exercise.sets}'),
-              )),
+          ..._exercises
+              .map((exercise) => ListTile(
+                    title: Text('${exercise.name}'),
+                    subtitle: Text(
+                        '무게: ${exercise.weight}kg, 횟수: ${exercise.reps}, 세트: ${exercise.sets}'),
+                    trailing: Checkbox(
+                      value: exercise.isChecked,
+                      onChanged: (value) {
+                        setState(() {
+                          exercise.isChecked = value ?? false;
+                        });
+                      },
+                    ),
+                  ))
+              .toList(),
           ElevatedButton(
             onPressed: () {
               showDialog(
@@ -88,26 +99,26 @@ class _WorkoutPageState extends State<WorkoutPage> {
                               onChanged: (value) => _weight = int.parse(value),
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
-                                labelText: 'Weight',
+                                labelText: '무게',
                               ),
                             ),
                             TextField(
                               onChanged: (value) => _reps = value,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
-                                labelText: 'Reps',
+                                labelText: '횟수',
                               ),
                             ),
                             TextField(
                               onChanged: (value) => _sets = value,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
-                                labelText: 'Sets',
+                                labelText: '세트',
                               ),
                             ),
                             ElevatedButton(
                               onPressed: _addExercise,
-                              child: Text('Add Exercise'),
+                              child: Text('운동 추가'),
                             ),
                           ],
                         );
@@ -117,7 +128,7 @@ class _WorkoutPageState extends State<WorkoutPage> {
                 },
               );
             },
-            child: Text('Add Exercise'),
+            child: Text('운동 추가'),
           ),
         ],
       ),

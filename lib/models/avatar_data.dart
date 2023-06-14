@@ -7,7 +7,7 @@ class AvatarData with ChangeNotifier {
 
   String name = 'User';
   int level = 1;
-  List<int> expForLevel = [500, 2000, 5000, 10000];
+  List<int> expForLevel = [400, 2000, 5000, 10000];
   int exp = 0;
   int points = 1000;
   List<Item> ownedItems = [];

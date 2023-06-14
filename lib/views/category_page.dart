@@ -16,8 +16,10 @@ class CategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final avatarData = Provider.of<AvatarData>(context);
     return Scaffold(
+      backgroundColor: Color.fromRGBO(10, 28, 35, 1),
       appBar: AppBar(
         title: Text('홈'),
+        backgroundColor: Color.fromRGBO(10, 28, 35, 1),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -29,16 +31,25 @@ class CategoryPage extends StatelessWidget {
                     radius: 90,
                     backgroundColor: Colors.white,
                     child: Image.asset(avatarData.avatarImage)),
-                Text('이름 : ${avatarData.name}'),
-                Text('Level: ${avatarData.level} EXP: ${avatarData.exp}'),
-                Text('Points: ${avatarData.points}'),
+                Text(
+                  '이름 : ${avatarData.name}',
+                  style: TextStyle(color: Colors.white),
+                ),
+                Text(
+                  'Level: ${avatarData.level} EXP: ${avatarData.exp}',
+                  style: TextStyle(color: Colors.white),
+                ),
+                Text(
+                  'Points: ${avatarData.points}',
+                  style: TextStyle(color: Colors.white),
+                ),
               ],
             ),
           ),
           Expanded(
             child: GridView.count(
               crossAxisCount: 2,
-              childAspectRatio: 1.0,
+              childAspectRatio: 1,
               padding: const EdgeInsets.all(20.0),
               mainAxisSpacing: 4.0,
               crossAxisSpacing: 4.0,
@@ -52,8 +63,10 @@ class CategoryPage extends StatelessWidget {
                   },
                   child: Text(
                     '트레이너 봇',
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 25, color: Colors.black),
                   ),
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.white)),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -64,9 +77,11 @@ class CategoryPage extends StatelessWidget {
                   },
                   child: Text(
                     '스마트워치 화면',
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 25, color: Colors.black),
                     textAlign: TextAlign.center,
                   ),
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.white)),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -77,9 +92,11 @@ class CategoryPage extends StatelessWidget {
                   },
                   child: Text(
                     '미니게임 \n화면',
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 25, color: Colors.black),
                     textAlign: TextAlign.center,
                   ),
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.white)),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -90,9 +107,11 @@ class CategoryPage extends StatelessWidget {
                   },
                   child: Text(
                     '운동분석 \n화면',
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 25, color: Colors.black),
                     textAlign: TextAlign.center,
                   ),
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.white)),
                 ),
               ],
             ),

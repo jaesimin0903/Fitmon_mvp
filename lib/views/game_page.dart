@@ -117,7 +117,7 @@ class _GamePageState extends State<GamePage> implements GameView {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              '제한시간 30초 동안 \n50번 클릭하기 시작!',
+              '제한시간 30초 동안 \n30번 클릭하기 시작!',
               style: TextStyle(fontSize: 20),
             ),
             Text(
@@ -172,7 +172,7 @@ class _GamePageState extends State<GamePage> implements GameView {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Game Over'),
-          content: Text('당신은 $finalScore 번 클릭했습니다! $points 포인트 획득!'),
+          content: Text('당신은 $finalScore 번 클릭했습니다! $points 경험치 획득!'),
           actions: <Widget>[
             TextButton(
               child: Text('다시하기'),
@@ -194,7 +194,7 @@ class _GamePageState extends State<GamePage> implements GameView {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('게임 클리어!'),
-          content: Text('축하합니다! 총 $finalScore 번 누르셨습니다! $points 포인트 획득!'),
+          content: Text('축하합니다! 총 $finalScore 번 누르셨습니다! $points 경험치 획득!'),
           actions: <Widget>[
             TextButton(
               child: Text('다시하기'),

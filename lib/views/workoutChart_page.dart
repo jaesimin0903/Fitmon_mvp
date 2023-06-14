@@ -19,7 +19,11 @@ class _LineChartSample2State extends State<LineChartSample2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('운동 분석')),
+      backgroundColor: Color.fromRGBO(10, 28, 35, 1),
+      appBar: AppBar(
+        title: Text('운동 분석'),
+        backgroundColor: Color.fromRGBO(10, 28, 35, 1),
+      ),
       body: Column(
         children: [
           Stack(
@@ -67,14 +71,15 @@ class _LineChartSample2State extends State<LineChartSample2> {
                 style: TextStyle(fontSize: 20),
               ),
               CircleAvatar(
-                backgroundImage: AssetImage('lib/assets/images/motion.gif'),
+                backgroundImage: AssetImage('lib/assets/images/3dmodel.gif'),
                 radius: 120.0,
               )
               //Image.asset('lib/assets/images/motion.gif')
             ]),
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.black, width: 3),
-                borderRadius: BorderRadius.all(Radius.circular(10))),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                color: Colors.white),
             padding: EdgeInsets.all(10.0),
           ),
           Padding(
@@ -91,7 +96,8 @@ class _LineChartSample2State extends State<LineChartSample2> {
               ]),
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.black, width: 3),
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  color: Colors.white),
             ),
           )
         ],
@@ -167,11 +173,12 @@ class _LineChartSample2State extends State<LineChartSample2> {
         return Container();
     }
 
-    return Text(text, style: style, textAlign: TextAlign.left);
+    return Text(text, style: style, textAlign: TextAlign.center);
   }
 
   LineChartData mainData() {
     return LineChartData(
+      backgroundColor: Colors.white,
       gridData: FlGridData(
         show: true,
         drawVerticalLine: true,
@@ -226,13 +233,12 @@ class _LineChartSample2State extends State<LineChartSample2> {
       lineBarsData: [
         LineChartBarData(
           spots: const [
-            FlSpot(0, 3),
-            FlSpot(2.6, 2),
-            FlSpot(4.9, 5),
+            FlSpot(0, 0),
+            FlSpot(4, 3),
+            FlSpot(6, 5),
             FlSpot(6.8, 3.1),
-            FlSpot(8, 4),
-            FlSpot(9.5, 3),
-            FlSpot(11, 4),
+            FlSpot(8, 1),
+            FlSpot(10, 0),
           ],
           isCurved: true,
           gradient: LinearGradient(

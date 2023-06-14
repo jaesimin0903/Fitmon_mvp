@@ -31,28 +31,28 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         currentIndex: _currentIndex,
-        selectedItemColor: Colors.red,
+        selectedItemColor: Color.fromARGB(255, 10, 25, 35),
         unselectedItemColor: Colors.grey,
         items: [
           new BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Category 1',
+            label: '홈',
           ),
           new BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
-            label: 'Category 2',
+            label: '상점',
           ),
           new BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Category 3',
+            icon: Icon(Icons.camera),
+            label: '오운완',
           ),
           new BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Category 4',
+            icon: Icon(Icons.run_circle_outlined),
+            label: '운동',
           ),
           new BottomNavigationBarItem(
-            icon: Icon(Icons.message),
-            label: 'Category 5',
+            icon: Icon(Icons.account_circle),
+            label: '내 정보',
           ),
         ],
       ),

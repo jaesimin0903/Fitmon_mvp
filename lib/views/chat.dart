@@ -50,9 +50,10 @@ class _ChatPageState extends State<ChatPage> {
   Future<String> generateResponse(String userInput) async {
     var userData = {"role": "user", "content": userInput};
     dynamic map = Map<dynamic, dynamic>.from(userData);
-
+    final String api_key =
+        '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';
     msgArr.add(map);
-    String token = "Bearer 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";
+    String token = "Bearer $api_key";
     print("prompt : $msgArr");
     var response =
         await http.post(Uri.parse("https://api.openai.com/v1/chat/completions"),

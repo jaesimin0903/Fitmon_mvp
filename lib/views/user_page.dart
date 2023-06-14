@@ -24,6 +24,16 @@ class RankingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final avatarData = Provider.of<AvatarData>(context);
+
+    List<User> users = [
+      User(avatarData.name, avatarData.points),
+      User('Friend 1', 1400),
+      User('Friend 2', 1300),
+      User('Friend 3', 1200),
+      User('Friend 4', 1100),
+      // Add more friends...
+    ];
+
     // Sort the user list based on points
     users.sort((a, b) => b.points.compareTo(a.points));
     return Scaffold(
@@ -47,7 +57,7 @@ class RankingPage extends StatelessWidget {
                 return ListTile(
                   leading: CircleAvatar(
                     backgroundColor:
-                        users[index].name == 'You' ? Colors.blue : Colors.grey,
+                        users[index].name == 'User' ? Colors.blue : Colors.grey,
                     child: Text(
                       (index + 1).toString(),
                       style: TextStyle(color: Colors.white),
